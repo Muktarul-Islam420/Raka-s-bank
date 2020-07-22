@@ -1,0 +1,76 @@
+body {
+    padding: 0 100px;
+    font-family: Source Sans Pro;
+    background: #282828;
+    background: linear-gradient(-45deg, #EE7752, goldenrod, #23A6D5, #23D5AB);
+    background-size: 400% 400%;
+    animation: Gradient 15s ease infinite;
+}
+
+.navbar {
+    margin-top: 0;
+    margin-bottom: 40px;
+}
+
+@-webkit-keyframes Gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.submit-area {
+    margin-top: 50px;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px gray;
+}
+
+#transaction-area {
+    display: none;
+    margin-top: 50px;
+}
+
+#bankName {
+    font-family: 'Rowdies', cursive;
+    color: rgb(24, 0, 245);
+}
+
+#name {
+    color: rgb(209, 0, 112);
+}
+
+.status {
+    margin: 0 20px;
+    padding: 20px;
+    color: white;
+    border-radius: 10px;
+}
+
+.deposit {
+    background-image: linear-gradient(18deg, slateblue, blue);
+    overflow: hidden;
+}
+
+.deposit:hover {
+    transform: scale(1);
+    transition: 0.1s;
+}
+
+.withdraw {
+    background-image: linear-gradient(180deg, lightsalmon, lightcoral);
+}
+
+.balance {
+    background-image: linear-gradient(180deg, orange, tomato);
+}
+
+footer {
+    margin-top: 80px;
+    text-align: center;
+}

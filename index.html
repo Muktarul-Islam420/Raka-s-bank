@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Rowdies&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="images/profile1.png" type="image/x-icon">
+    <title>Raka's Bank</title>
+</head>
+
+<body>
+    <nav class="navbar d-flex justify-content-center">
+        <nav class="navbar navbar-expand-lg navbar-light " style="background-color: #f8e3fd86;">
+            <!-- Just an image -->
+            <a class="navbar-brand" href="#">
+                <img src="images/profile1.png" width="30" height="30" alt="" loading="lazy">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#login">Account</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Dropdown
+                  </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#dePosit">Deposit</a>
+                            <a class="dropdown-item" href="#witHdraw">Withdraw</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#baLance">Balance</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+        </nav>
+    </nav>
+
+
+
+    <div>
+        <h1 id="bankName" class="text-center">Welcome to <span id="name">Raka's</span> Bank</h1>
+        <div id="login-area" class="submit-area">
+            <h4>login</h4>
+            <input type="text" name="" class="form-control" id="" placeholder="email">
+            <br>
+            <input type="password" name="" class="form-control" id="" placeholder="password">
+            <br>
+            <button id="login" class="btn btn-success">Enter</button>
+
+        </div>
+    </div>
+    <div id="transaction-area">
+        <div class="row">
+            <div class="col-md-4">
+                <div id="dePosit" class="deposit status">
+                    <h5 class=" d-flex justify-content-center">Deposit</h5>
+                    <h2 class=" d-flex justify-content-center">$<span id="current-deposit"> 00</span></h2>
+
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div id="witHdraw" class="withdraw status">
+                    <h5 class=" d-flex justify-content-center">Withdraw</h5>
+                    <h2 class=" d-flex justify-content-center">$<span id="current-withdraw"> 00</span></h2>
+
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div id="baLance" class="balance status">
+                    <h5 class=" d-flex justify-content-center">Balance</h5>
+                    <h2 class=" d-flex justify-content-center">$<span id="current-balance">1500</span></h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="submit-area">
+                    <h4>Deposit</h4>
+                    <br>
+                    <input id="deposit-amount" type="text" class="form-control" placeholder="$ amount you want to deposit">
+                    <br>
+                    <button id="add-deposit" class="btn btn-success">Deposit</button>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="submit-area">
+                    <h4>Withdraw</h4>
+                    <br>
+                    <input id="withdraw-amount" type="text" class="form-control" placeholder="$ amount you want to withdraw">
+                    <br>
+                    <button id="add-withdraw" class="btn btn-success">Withdraw</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer id="transaction-area"><small>©copyright-2020.All right reserved.Muktarul khan,Bangladesh</small></footer>
+    <script>
+        //login button even handler
+        const loginBtn = document.getElementById("login");
+        loginBtn.addEventListener("click", function() {
+                const loginArea = document.getElementById("login-area");
+                loginArea.style.display = "none";
+                const transactionArea = document.getElementById("transaction-area");
+                transactionArea.style.display = "block";
+            })
+            //deposit button even handler
+        const depositBtn = document.getElementById("add-deposit");
+        depositBtn.addEventListener("click", function() {
+            const depositNumber = getInputNumber("deposit-amount");
+
+            updateSpanText("current-deposit", depositNumber);
+            updateSpanText("current-balance", depositNumber);
+
+            document.getElementById("deposit-amount").value = "";
+        })
+
+        //withdraw button handler
+        const withdrawBtn = document.getElementById("add-withdraw");
+        withdrawBtn.addEventListener("click", function() {
+            const withdrawNumber = getInputNumber("withdraw-amount");
+
+            updateSpanText("current-withdraw", withdrawNumber);
+            updateSpanText("current-balance", -1 * withdrawNumber);
+
+
+            document.getElementById("withdraw-amount").value = "";
+        })
+
+        function getInputNumber(id) {
+            const Amount = document.getElementById(id).value;
+            const amountNumber = parseFloat(Amount);
+            return amountNumber;
+        }
+        /**
+                 const currentBalance = document.getElementById("current-balance").innerText;
+                 const currentBalanceNumber = parseFloat(currentBalance);
+                 const totalBalance = depositNumber + currentBalanceNumber;
+                 document.getElementById("current-balance").innerText = totalBalance;
+
+              
+                 const currentBalance = document.getElementById("current-balance").innerText;
+                 const currentBalanceNumber = parseFloat(currentBalance);
+                 const totalBalance = depositNumber + currentBalanceNumber;
+                 document.getElementById("current-balance").innerText = totalBalance;
+                  */
+
+
+
+
+
+
+        function updateSpanText(id, depositNumber) {
+            const current = document.getElementById(id).innerText;
+            const currentNumber = parseFloat(current);
+            const totalAmount = depositNumber + currentNumber;
+            document.getElementById(id).innerText = totalAmount;
+        }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
