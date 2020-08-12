@@ -126,8 +126,8 @@
         depositBtn.addEventListener("click", function() {
             const depositNumber = getInputNumber("deposit-amount");
 
-            if (depositNumber < 0) {
-                alert(`deposit number cannot be negative`)
+            if (depositNumber < 0 || depositNumber == " ") {
+                alert(`deposit amount cannot be negative`)
             } else {
                 updateSpanText("current-deposit", depositNumber);
                 updateSpanText("current-balance", depositNumber);
